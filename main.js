@@ -2,16 +2,13 @@ class Measure{
 
 constructor(id,name,description){
 
-if ( arguments.lenth !==3
+if ( arguments.length !==3
     || typeof id !== `number`
     || typeof name !== `string`
     || typeof description !== `string`
     || id === 0 
-    || name.length == 0
-    || name.length >= 5
-    || /^[A-ZА-Я][a-zа-я]{1,5}$/.test(name) 
-    || description.lenght == 0
-    || /^[A-ZА-Я][a-zа-я]{1,255}$/.test(description)
+    || !/^[a-zа-я]{1,10}$/.test(name) 
+    || !/^[a-zа-я\s]{1,255}$/.test(description)
     ){
     throw new Error(`Wrong data input (class: Measure)`)
     }
@@ -57,9 +54,9 @@ if (arguments.length !==8
     || typeof personalshoppingcondition !== `boolean`
     || id == 0
     || name.length == 0
-    || /^[A-ZА-Я][a-zа-я]{1,255}$/.test(name)
+    || !/^[A-ZА-Я][a-zа-я]{1,255}$/.test(name)
     || description.length == 0
-    || /^[A-ZА-Я][a-zа-я]{1,255}$/.test(description)
+    || !/^[A-ZА-Я][a-zа-я]{1,255}$/.test(description)
     || price == 0 
     || measureid == 0
     || categoryid == 0  
@@ -90,9 +87,11 @@ return quantity-1
 
 }
 
-var MeasureVariants = [
+const measureVariants = [
 
-const MeasureVariant1=new Measure (1,kg,kilograms),
-const MeasureVariant2=new Measure (2,l,litr),
-const MeasureVariant3=new Measure (3,amount,amount_of_product) 
+new Measure (1,'kg','kilograms'),
+new Measure (2,'l','litr'),
+new Measure (3,'amount','amount of product') 
 ];
+
+console.log(measureVariants)
